@@ -23,5 +23,7 @@ namespace Licenta.Data
         public DbSet<Licenta.Models.Client> Client { get; set; }
 
         public DbSet<Licenta.Models.TipSocietate> TipSocietate { get; set; }
+
+        public DbSet<Licenta.Models.Oferta> Oferta { get; set; }
     }
 }
