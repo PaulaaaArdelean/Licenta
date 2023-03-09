@@ -4,6 +4,7 @@ using Licenta.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Licenta.Migrations
 {
     [DbContext(typeof(LicentaContext))]
-    partial class LicentaContextModelSnapshot : ModelSnapshot
+    [Migration("20230309130002_clienti")]
+    partial class clienti
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -113,12 +115,7 @@ namespace Licenta.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("TipSocietateID")
-                        .HasColumnType("int");
-
                     b.HasKey("ID");
-
-                    b.HasIndex("TipSocietateID");
 
                     b.ToTable("Client");
                 });
@@ -138,23 +135,6 @@ namespace Licenta.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("TipCombustibil");
-                });
-
-            modelBuilder.Entity("Licenta.Models.TipSocietate", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
-
-                    b.Property<string>("TipulSocietate")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("TipSocietate");
                 });
 
             modelBuilder.Entity("Licenta.Models.Vehicul", b =>
@@ -220,15 +200,6 @@ namespace Licenta.Migrations
                     b.ToTable("Vehicul");
                 });
 
-            modelBuilder.Entity("Licenta.Models.Client", b =>
-                {
-                    b.HasOne("Licenta.Models.TipSocietate", "TipSocietate")
-                        .WithMany("Client")
-                        .HasForeignKey("TipSocietateID");
-
-                    b.Navigation("TipSocietate");
-                });
-
             modelBuilder.Entity("Licenta.Models.Vehicul", b =>
                 {
                     b.HasOne("Licenta.Models.CategorieVehicul", "CategorieVehicul")
@@ -252,11 +223,6 @@ namespace Licenta.Migrations
             modelBuilder.Entity("Licenta.Models.TipCombustibil", b =>
                 {
                     b.Navigation("Vehicule");
-                });
-
-            modelBuilder.Entity("Licenta.Models.TipSocietate", b =>
-                {
-                    b.Navigation("Client");
                 });
 #pragma warning restore 612, 618
         }

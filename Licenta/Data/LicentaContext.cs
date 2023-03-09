@@ -19,5 +19,9 @@ namespace Licenta.Data
         public DbSet<Licenta.Models.TipCombustibil> TipCombustibil { get; set; }
 
         public DbSet<Licenta.Models.CategorieVehicul> CategorieVehicul { get; set; }
+
+        public DbSet<Licenta.Models.Client> Client { get; set; }
+
+        public DbSet<Licenta.Models.TipSocietate> TipSocietate { get; set; }
     }
 }
