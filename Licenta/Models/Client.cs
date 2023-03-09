@@ -113,7 +113,7 @@ namespace Licenta.Models
         
         [Display(Name = "Codul postal")]
         [RegularExpression("^[0-9]{6}$", ErrorMessage = "Codul postal trebuie sa contina 6 cifre")]
-        public string CodPostal { get; set; }
+        public string? CodPostal { get; set; }
         
         
         
