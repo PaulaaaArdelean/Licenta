@@ -40,14 +40,32 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Vehicule/Index"><i class="bi bi-car-front-fill"></i> Vehicule</a>
                         </li>
+                        <!--
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/CategoriiVehicule/Index"><i class="bi bi-car-front"></i> Categorii</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/TipuriCombustibil/Index"><i class="bi bi-fuel-pump-diesel-fill"></i> Combustibil</a>
                         </li>
+                    
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/TipuriSocietati/Index"><i class="bi bi-bank2"></i> Tipuri societati</a>
+                        </li>
+                       -->
+                        <li>
+
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                if (User.IsInRole("Admin"))
+                                {
+                                    <!-- <a asp-area="" asp-controller="Admin" asp-action=""></a> -->
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/TipuriSocietati/Index"><i class="bi bi-bank2"></i> Tipuri societati</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/TipuriCombustibil/Index"><i class="bi bi-fuel-pump-diesel-fill"></i> Combustibil</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/CategoriiVehicule/Index"><i class="bi bi-car-front"></i> Categorii</a>
+
+                                }
+                            }
+
                         </li>
                         <partial name="_LoginPartial" />   
                     </ul>
